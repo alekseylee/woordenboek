@@ -40,26 +40,24 @@ public class DictionaryController {
         return ResponseEntity.status(HttpStatus.OK).body(responses);
     }
 
+//    @PostMapping("/create")
+//    public ResponseEntity<Long> createDictionary(@RequestBody DictionaryCreateRequest req) {
+//        try {
+//            Long response = dictionaryService.createDictionary(req);
+//            return new ResponseEntity<>(response, HttpStatus.CREATED);
+//        } catch (DictionaryException e) {
+//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//        }
+//    }
+
+
+
     @PostMapping("/create")
-    public ResponseEntity<Long> createDictionary(@RequestBody DictionaryCreateRequest req) {
-        try {
-            Long response = dictionaryService.createDictionary(req);
-            return new ResponseEntity<>(response, HttpStatus.CREATED);
-        } catch (DictionaryException e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-    }
-
-
-
-    @PostMapping("/createMyDictionaries")
     public ResponseEntity<List<Long>> createDictionaries(@RequestBody List<DictionaryCreateRequest> requests) {
+        System.out.println(requests);
         List<Long> savedIds = new ArrayList<>();
-        for (DictionaryCreateRequest req : requests) {
-            Long savedId = dictionaryService.createDictionary(req);
-            savedIds.add(savedId);
-        }
-        return new ResponseEntity<List<Long>>(HttpStatus.CREATED);
+        savedIds = dictionaryService.createDictionaries(requests);
+        return new ResponseEntity<List<Long>>(savedIds, HttpStatus.CREATED);
     }
 
 

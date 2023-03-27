@@ -1,9 +1,6 @@
 package org.example.woordenboek.services.flows;
 
-import org.example.woordenboek.data.dtos.DictionaryCreateRequest;
-import org.example.woordenboek.data.dtos.DictionaryDeleteRequest;
-import org.example.woordenboek.data.dtos.DictionaryResponse;
-import org.example.woordenboek.data.dtos.DictionaryUpdateRequest;
+import org.example.woordenboek.data.dtos.*;
 import org.example.woordenboek.services.exceptions.DictionaryException;
 
 import java.util.List;
@@ -19,8 +16,8 @@ public interface DictionaryService {
     List<DictionaryResponse> getAllDictionaries();
     Optional<DictionaryResponse> getDictionaryById(Long id);
 
-    Optional<DictionaryResponse> getDictionaryByDutchWord(String dutchWord);
-    Optional<DictionaryResponse> getDictionaryByEnglishWord(String englishWord);
+    DictionaryResponseWord getDictionaryByWord(String translation);
+    DictionaryResponseTranslation getDictionaryByTranslation(String translation);
 
 
 

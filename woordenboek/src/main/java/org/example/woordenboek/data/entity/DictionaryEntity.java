@@ -1,5 +1,7 @@
 package org.example.woordenboek.data.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -15,6 +17,8 @@ public class DictionaryEntity {
     public DictionaryEntity(){
 
     }
+
+
 
     public Long getId() {
         return id;

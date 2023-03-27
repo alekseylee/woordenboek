@@ -1,10 +1,9 @@
 package org.example.woordenboek.services.mappers;
 
-import org.example.woordenboek.data.dtos.DictionaryCreateRequest;
-import org.example.woordenboek.data.dtos.DictionaryDeleteRequest;
-import org.example.woordenboek.data.dtos.DictionaryResponse;
-import org.example.woordenboek.data.dtos.DictionaryUpdateRequest;
+import org.example.woordenboek.data.dtos.*;
 import org.example.woordenboek.data.entity.DictionaryEntity;
+
+import java.util.List;
 
 public interface DictionaryMapper {
 
@@ -12,5 +11,8 @@ public interface DictionaryMapper {
     DictionaryEntity toEntity(DictionaryUpdateRequest req);
     DictionaryEntity toEntity(DictionaryDeleteRequest req);
     DictionaryResponse toResponse(DictionaryEntity ent);
+    DictionaryResponseWord toResponseWord(DictionaryEntity ent);
+    DictionaryResponseTranslation toResponseTranslation(DictionaryEntity ent);
+    List<DictionaryResponse> toResponses(List<DictionaryEntity> entities);
 
 }

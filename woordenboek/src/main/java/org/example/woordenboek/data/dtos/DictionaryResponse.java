@@ -1,5 +1,6 @@
 package org.example.woordenboek.data.dtos;
 
+import lombok.Data;
 import lombok.Value;
 import org.example.woordenboek.data.entity.DictionaryEntity;
 

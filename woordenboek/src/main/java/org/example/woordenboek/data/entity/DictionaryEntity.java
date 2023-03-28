@@ -1,16 +1,18 @@
 package org.example.woordenboek.data.entity;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@AllArgsConstructor
 public class DictionaryEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String word;
     private String translation;
 

@@ -4,12 +4,8 @@ import org.example.woordenboek.data.dtos.*;
 import org.example.woordenboek.data.entity.DictionaryEntity;
 import org.example.woordenboek.data.repository.DictionaryRepository;
 import org.example.woordenboek.services.mappers.DictionaryMapper;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -72,14 +68,14 @@ public class DictionaryServiceImpl implements DictionaryService{
     }
 
     @Override
-    public DictionaryResponseWord getDictionaryByWord(String translation) {
-        DictionaryEntity entity = (DictionaryEntity) dictionaryRepository.findByTranslation(translation);
-        return dictionaryMapper.toResponseWord(entity);
+    public DictionaryResponse getDictionaryByWord(String word) {
+        DictionaryEntity entity = dictionaryRepository.findByWord(word);
+        return null;
     }
 
     @Override
-    public DictionaryResponseTranslation getDictionaryByTranslation(String word) {
-        DictionaryEntity entity = (DictionaryEntity) dictionaryRepository.findByWord(word);
-        return dictionaryMapper.toResponseTranslation(entity);
+    public DictionaryResponse getDictionaryByTranslation(String translation) {
+        DictionaryEntity entity = dictionaryRepository.findByTranslation(translation);
+        return dictionaryMapper.toResponse(entity);
     }
 }

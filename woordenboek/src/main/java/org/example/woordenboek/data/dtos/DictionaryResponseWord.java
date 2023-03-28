@@ -1,6 +1,5 @@
 package org.example.woordenboek.data.dtos;
 
-import lombok.Data;
 import lombok.Value;
 
 @Value

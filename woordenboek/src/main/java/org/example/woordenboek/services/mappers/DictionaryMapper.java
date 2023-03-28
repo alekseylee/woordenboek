@@ -11,8 +11,7 @@ public interface DictionaryMapper {
     DictionaryEntity toEntity(DictionaryUpdateRequest req);
     DictionaryEntity toEntity(DictionaryDeleteRequest req);
     DictionaryResponse toResponse(DictionaryEntity ent);
-    DictionaryResponseWord toResponseWord(DictionaryEntity ent);
-    DictionaryResponseTranslation toResponseTranslation(DictionaryEntity ent);
+
     List<DictionaryResponse> toResponses(List<DictionaryEntity> entities);
 
 }

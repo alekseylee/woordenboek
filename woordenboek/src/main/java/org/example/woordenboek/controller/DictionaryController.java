@@ -28,6 +28,7 @@ public class DictionaryController {
 
     private DictionaryRepository repository;
 
+
     public DictionaryController(DictionaryService dictionaryService) {
         this.dictionaryService = dictionaryService;
     }
@@ -74,20 +75,19 @@ public class DictionaryController {
     }
 
     @GetMapping("/translator/{word}")
-    public DictionaryEntity getWord(@PathVariable String word) {
-        return words.stream()
-                .filter(w -> w.getTranslation().equalsIgnoreCase(word))
-                .findFirst()
-                .orElse(null);
+    public ResponseEntity<DictionaryEntity>> getDictionaryByTranslation(@PathVariable String translation) {
+        DictionaryResponse response = dictionaryService.getDictionaryByWord(translation);
+        return ResponseEntity.status(HttpStatus.OK).body(r);
     }
 
-    @GetMapping("/translator/{translation}")
-    public DictionaryEntity getTranslation(@PathVariable String translation) {
-        return words.stream()
-                .filter(w -> w.getTranslation().equalsIgnoreCase(translation))
-                .findFirst()
-                .orElse(null);
-    }
+//    @GetMapping("/translator/{translation}")
+//    public ResponseEntity<DictionaryResponse> getTranslation(@PathVariable String word) {
+//        return words.stream()
+//                .filter(w -> w.getWord().equalsIgnoreCase(word))
+//                .findFirst()
+//                .orElse(null);
+//    }
+
 }
 
 //    @GetMapping("/{dutch}")

@@ -46,24 +46,6 @@ public class DictionaryMapperImpl implements DictionaryMapper{
     }
 
     @Override
-    public DictionaryResponseWord toResponseWord(DictionaryEntity ent) {
-        return new DictionaryResponseWord(
-                ent.getId(),
-                ent.getTranslation()
-        );
-    }
-
-    @Override
-    public DictionaryResponseTranslation toResponseTranslation(DictionaryEntity ent) {
-        return new DictionaryResponseTranslation(
-                ent.getId(),
-                ent.getWord()
-        );
-    }
-
-
-
-    @Override
     public List<DictionaryResponse> toResponses(List<DictionaryEntity> entities) {
         return entities.stream().map(this::toResponse).collect(Collectors.toUnmodifiableList());
     }

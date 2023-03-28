@@ -16,11 +16,8 @@ public interface DictionaryService {
     List<DictionaryResponse> getAllDictionaries();
     Optional<DictionaryResponse> getDictionaryById(Long id);
 
-    DictionaryResponseWord getDictionaryByWord(String translation);
-    DictionaryResponseTranslation getDictionaryByTranslation(String translation);
+    DictionaryResponse getDictionaryByWord(String word);
 
 
-
-
-
+    DictionaryResponse getDictionaryByTranslation(String translation);
 }

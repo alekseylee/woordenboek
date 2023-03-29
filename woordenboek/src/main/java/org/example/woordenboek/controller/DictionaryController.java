@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/words")
+@RequestMapping("/api/v1/dictionary")
 public class DictionaryController {
     private List<DictionaryEntity> words = new ArrayList<>();
 
@@ -74,35 +74,18 @@ public class DictionaryController {
                 .orElseGet(()-> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/translator/{word}")
-    public ResponseEntity<DictionaryEntity>> getDictionaryByTranslation(@PathVariable String translation) {
-        DictionaryResponse response = dictionaryService.getDictionaryByWord(translation);
-        return ResponseEntity.status(HttpStatus.OK).body(r);
+    @GetMapping("/translate/{translation}")
+    public ResponseEntity <DictionaryResponse> getByTranslation(@PathVariable String translation) {
+        Optional<DictionaryResponse> dictionaryResponse = Optional.of(dictionaryService.getDictionaryByTranslation(translation));
+        return dictionaryResponse.map(response -> new ResponseEntity<>(response, HttpStatus.FOUND))
+                .orElseGet(()-> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-//    @GetMapping("/translator/{translation}")
-//    public ResponseEntity<DictionaryResponse> getTranslation(@PathVariable String word) {
-//        return words.stream()
-//                .filter(w -> w.getWord().equalsIgnoreCase(word))
-//                .findFirst()
-//                .orElse(null);
-//    }
+    @GetMapping("/translate/{word}")
+    public ResponseEntity <DictionaryResponse> getByWord(@PathVariable String word) {
+        Optional<DictionaryResponse> dictionaryResponse = Optional.of(dictionaryService.getDictionaryByWord(word));
+        return dictionaryResponse.map(response -> new ResponseEntity<>(response, HttpStatus.FOUND))
+                .orElseGet(()-> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
 
 }
-
-//    @GetMapping("/{dutch}")
-//    public ResponseEntity <DictionaryResponse> getByDutch(@PathVariable String dutchWord) {
-//        Optional<DictionaryResponse> dictionaryResponse = dictionaryService.getDictionaryByDutchWord(dutchWord);
-//        return dictionaryResponse.map(response -> new ResponseEntity<>(response, HttpStatus.FOUND))
-//                .orElseGet(()-> new ResponseEntity<>(HttpStatus.NOT_FOUND));
-//    }
-
-//    @GetMapping("/{english}")
-//    public ResponseEntity <DictionaryResponse> getByEnglish(@PathVariable String englishWord) {
-//        Optional<DictionaryResponse> dictionaryResponse = dictionaryService.getDictionaryByEnglishWord(englishWord);
-//        return dictionaryResponse.map(response -> new ResponseEntity<>(response, HttpStatus.FOUND))
-//                .orElseGet(()-> new ResponseEntity<>(HttpStatus.NOT_FOUND));
-//    }
-
-
-

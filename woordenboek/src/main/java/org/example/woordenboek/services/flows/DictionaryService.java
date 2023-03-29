@@ -1,7 +1,6 @@
 package org.example.woordenboek.services.flows;
 
 import org.example.woordenboek.data.dtos.*;
-import org.example.woordenboek.services.exceptions.DictionaryException;
 
 import java.util.List;
 import java.util.Optional;

@@ -70,7 +70,7 @@ public class DictionaryServiceImpl implements DictionaryService{
     @Override
     public DictionaryResponse getDictionaryByWord(String word) {
         DictionaryEntity entity = dictionaryRepository.findByWord(word);
-        return null;
+        return dictionaryMapper.toResponse(entity);
     }
 
     @Override
